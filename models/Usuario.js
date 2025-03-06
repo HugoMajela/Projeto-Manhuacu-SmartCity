@@ -1,24 +1,29 @@
-const mongoose = require('mongoose')
-const bcrypt = require('bcryptjs')
+const mongoose = require('mongoose');
+const crypto = require('crypto');
 
-const usuarioSchema = new mongoose.Schema({
-    nome: { type: String, required: true },
-    email: { type: String, required: true, unique: true },
-    senha: { type: String, required: true },
+const UsuarioSchema = new mongoose.Schema({
+    nome: {
+        type: String,
+        required: true
+    },
+    email: {
+        type: String,
+        required: true,
+        unique: true
+    },
+    senha: {
+        type: String,
+        required: true
+    }
+}, { timestamps: true });
 
-}, {
-    timestamps: true,
-})
+UsuarioSchema.methods.gerarHash = function(senha) {
+    return crypto.createHash('sha256').update(senha).digest('hex');
+};
 
-usuarioSchema.methods.compararSenha = async function (senha) {
-    return await bcrypt.compare(senha, this.senha)
-}
+UsuarioSchema.methods.compararSenha = function(senha) {
+    const hashGerado = this.gerarHash(senha);
+    return hashGerado === this.senha;
+};
 
-usuarioSchema.pre('save', async function(next){
-    if (!this.isModified('senha')) return next()
-    this.senha = await bcrypt.hash(this.senha, 10)
-    next()
-})
-
-const Usuario = mongoose.model('Usuario', usuarioSchema)
-module.exports = Usuario
+module.exports = mongoose.model('Usuario', UsuarioSchema);
