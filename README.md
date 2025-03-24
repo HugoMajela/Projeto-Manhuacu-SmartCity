@@ -52,7 +52,7 @@ Esse projeto se trata de uma API para o site de promoções e busca de produtos 
   <tr>
     <td>POST</td>
     <td>/api/empresas/:id/produtos</td>
-    <td>>Associar um produto a uma empresa</td>
+    <td>Associar um produto a uma empresa</td>
   </tr>
 </table>
 
