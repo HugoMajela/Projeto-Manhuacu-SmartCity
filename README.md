@@ -14,6 +14,16 @@ Esse projeto se trata de uma API para o site de promoções e busca de produtos 
 - Criar, listar e deletar produtos  
 - Associar produtos a empresas  
 - Buscar produtos por nome e descrição
+- Cadastro, login e autenticação de usuários
+
+## Estrutura de Arquivos
+- db.js: Conexão com o banco de dados MongoDB.
+- models/Empresa.js: Define o modelo de dados para empresas.
+- models/Produto.js: Define o modelo de dados para produtos.
+- models/Usuario.js: Define o modelo de dados para usuários.
+- routes/rotasEmpresa.js: Rotas para criação, listagem e exclusão de empresas.
+- routes/rotasProduto.js: Rotas para criação, listagem, exclusão e pesquisa de produtos.
+- routes/rotasUsuario.js: Rotas para cadastro, login e autenticação de usuários.
 
 # Rotas
 
@@ -39,6 +49,11 @@ Esse projeto se trata de uma API para o site de promoções e busca de produtos 
     <td>/api/empresas/:id</td>
     <td>Remover uma empresa</td>
   </tr>
+  <tr>
+    <td>POST</td>
+    <td>/api/empresas/:id/produtos</td>
+    <td>>Associar um produto a uma empresa</td>
+  </tr>
 </table>
 
 ## Produtos
@@ -60,7 +75,7 @@ Esse projeto se trata de uma API para o site de promoções e busca de produtos 
   </tr>
   <tr>
     <td>GET</td>
-    <td>/api/produtos?pesquisa=pesquisa feita pelo usuário</td>
+    <td>/api/produtos?pesquisa=pesquisa_usuario</td>
     <td>Buscar produtos por nome ou descrição</td>
   </tr>
   <tr>
@@ -75,7 +90,7 @@ Esse projeto se trata de uma API para o site de promoções e busca de produtos 
   </tr>
 </table>
 
-## Associar Produto com Empresa
+## Usuários
 <table>
   <tr>
     <th>Método</th>
@@ -84,8 +99,13 @@ Esse projeto se trata de uma API para o site de promoções e busca de produtos 
   </tr>
   <tr>
     <td>POST</td>
-    <td>/api/empresas/:id/produtos</td>
-    <td>Associar um produto a uma empresa</td>
+    <td>/api/usuarios/cadastro</td>
+    <td>Cadastro de um novo usuário</td>
+  </tr>
+  <tr>
+    <td>POST</td>
+    <td>/api/usuarios/login</td>
+    <td>Login de um usuário</td>
   </tr>
 </table>
 
@@ -131,3 +151,8 @@ Inicie o servidor:
 npm start
 ```
 A API rodará em: http://localhost:5000
+
+## Melhorias a serem feitas
+
+Ao fazer o login pela primeira vez, um token de autentificação é criado, porém o sistema não entende
+e não carrega para a página principal, só após fazer o login pela segunda vez que o usuário é redirecionado.
