@@ -8,6 +8,7 @@ Esse projeto se trata de uma API para o site de promoções e busca de produtos 
 - **MongoDB** - Banco de dados
 - **Mongoose** - Biblioteca para manipular os dados no MongoDB
 - **Cors** e **Body-parser** - Ferramentas para manipular requisições
+- **Puppeteer** - Biblioteca para automação de navegação no navegador e scraping de dados
 
 ## Funcionalidades  
 - Criar, listar e deletar empresas  
