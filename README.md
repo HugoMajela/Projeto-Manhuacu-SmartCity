@@ -15,6 +15,7 @@ Esse projeto se trata de uma API para o site de promoções e busca de produtos 
 - Associar produtos a empresas  
 - Buscar produtos por nome e descrição
 - Cadastro, login e autenticação de usuários
+- Web scraping para coleta de dados de produtos de supermercados locais
 
 ## Estrutura de Arquivos
 - db.js: Conexão com o banco de dados MongoDB.
@@ -24,6 +25,8 @@ Esse projeto se trata de uma API para o site de promoções e busca de produtos 
 - routes/rotasEmpresa.js: Rotas para criação, listagem e exclusão de empresas.
 - routes/rotasProduto.js: Rotas para criação, listagem, exclusão e pesquisa de produtos.
 - routes/rotasUsuario.js: Rotas para cadastro, login e autenticação de usuários.
+- paisEFilhos/index.js: Web Scraping do site do Pais e Filhos Supermercado.
+- paxa/index.js: Web Scraping do site do Paxá.
 
 # Rotas
 
@@ -108,6 +111,41 @@ Esse projeto se trata de uma API para o site de promoções e busca de produtos 
     <td>Login de um usuário</td>
   </tr>
 </table>
+
+## Web Scraping
+
+### Sobre o Web Scraping
+O projeto também realiza scraping de dados de produtos de supermercados da região de Manhuaçu usando **Puppeteer** para extrair dados como título e preço dos produtos.
+
+#### Sites utilizados:
+- **Supermercado País e Filhos**: https://supermercadopaisefilhos.com.br/
+- **Paxá Supermercados**: https://paxaemcasa.com.br/
+
+### Scripts de Scraping
+
+1. **Supermercado País e Filhos**
+    - Script para fazer login no site e extrair os títulos e preços dos produtos.
+
+    ```bash
+    # Para executar o script de scraping, vá até o diretório 'paisEFilhos' e execute:
+    node index.js
+    ```
+
+2. **Paxá Supermercados**
+    - Script para extrair os títulos e preços dos produtos diretamente da página de loja.
+
+    ```bash
+    # Para executar o script de scraping, vá até o diretório 'paxa' e execute:
+    node index.js
+    ```
+
+### Dependências para Web Scraping
+
+Se você ainda não tiver o **Puppeteer** instalado, pode instalá-lo com o seguinte comando:
+
+```bash
+npm install puppeteer
+```
 
 ## Instruções de uso
 
